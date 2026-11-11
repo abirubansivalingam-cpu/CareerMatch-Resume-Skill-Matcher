@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4"><div><p class="text-primary fw-semibold mb-1">YOUR WORKSPACE</p><h1 class="fw-bold">Hello, {{ user.username }}</h1><p class="muted mb-0">Compare your resume with your next opportunity.</p></div><a href="{% url 'analyze' %}" class="btn btn-primary btn-lg">+ Analyze a resume</a></div>
+<div class="row g-3 mb-4"><div class="col-md-6"><div class="card p-4"><div class="muted">Saved reports</div><div class="metric">{{ total_count }}</div></div></div><div class="col-md-6"><div class="card p-4"><div class="muted">Average keyword match</div><div class="metric">{{ average_score }}%</div></div></div></div>
+<div class="card p-4"><div class="d-flex justify-content-between align-items-center"><h4 class="fw-bold">Recent analyses</h4><a href="{% url 'history' %}">View all</a></div>
+{% if analyses %}<div class="table-responsive"><table class="table align-middle"><thead><tr><th>Target role</th><th>Match</th><th>Date</th><th></th></tr></thead><tbody>{% for item in analyses %}<tr><td>{{ item.job_title }}</td><td><span class="badge text-bg-primary">{{ item.match_percentage }}%</span></td><td>{{ item.created_at|date:"d M Y, H:i" }}</td><td><a href="{% url 'analysis_detail' item.pk %}">View report</a></td></tr>{% endfor %}</tbody></table></div>{% else %}<p class="muted mb-0">No reports yet. Start by analyzing your first resume.</p>{% endif %}</div>
+{% endblock %}

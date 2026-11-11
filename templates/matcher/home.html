@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block title %}CareerMatch — Resume Skill Matcher{% endblock %}
+{% block content %}
+<section class="hero p-4 p-lg-5 mb-4">
+  <span class="badge text-bg-light mb-3">MCA Mini Project</span>
+  <h1 class="display-5 fw-bold">Turn job descriptions into a clear skill plan.</h1>
+  <p class="lead mt-3 mb-4">Upload a PDF resume, paste a job description, and see matched skills, missing keywords, and practical next steps.</p>
+  <a class="btn btn-light btn-lg me-2" href="{% url 'register' %}">Get started</a>
+  <a class="btn btn-outline-light btn-lg" href="{% url 'login' %}">Sign in</a>
+</section>
+<div class="row g-3">
+  <div class="col-md-4"><div class="card p-4 h-100"><h5>01 · Extract</h5><p class="muted mb-0">Read selectable text from PDF resumes without sending files to an external AI service.</p></div></div>
+  <div class="col-md-4"><div class="card p-4 h-100"><h5>02 · Compare</h5><p class="muted mb-0">Compare skills detected in the resume against those listed in the job description.</p></div></div>
+  <div class="col-md-4"><div class="card p-4 h-100"><h5>03 · Improve</h5><p class="muted mb-0">Review matched and missing skills and use the report to plan truthful resume improvements.</p></div></div>
+</div>
+<p class="small muted mt-4">Note: results use a simple keyword dictionary and are not a measure of actual competence or a hiring decision.</p>
+{% endblock %}

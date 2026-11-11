@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}Analyze resume{% endblock %}
+{% block content %}<div class="row justify-content-center"><div class="col-lg-9"><div class="card p-4 p-lg-5"><a href="{% url 'dashboard' %}" class="text-decoration-none mb-3">← Dashboard</a><h1 class="fw-bold">Resume skill analysis</h1><p class="muted">Your PDF and report are stored in this local project. Upload a text-based PDF up to 5 MB.</p>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+{% for field in form %}<div class="mb-4"><label class="form-label fw-semibold" for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}{% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}</div>{% endfor %}
+<button class="btn btn-primary btn-lg">Analyze skills</button></form></div></div></div>
+<style>input[type=text],input[type=file],textarea{display:block;width:100%;padding:.7rem;border:1px solid #ccd4e2;border-radius:9px;background:white}textarea{resize:vertical}</style>{% endblock %}

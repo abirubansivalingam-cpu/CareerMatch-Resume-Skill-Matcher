@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Delete report{% endblock %}
+{% block content %}<div class="row justify-content-center"><div class="col-md-7"><div class="card p-4"><h2 class="fw-bold">Delete this report?</h2><p>This removes the analysis for <strong>{{ analysis.job_title }}</strong> and its uploaded resume from this project.</p><form method="post">{% csrf_token %}<button class="btn btn-danger">Yes, delete</button> <a class="btn btn-outline-secondary" href="{% url 'analysis_detail' analysis.pk %}">Cancel</a></form></div></div></div>{% endblock %}
